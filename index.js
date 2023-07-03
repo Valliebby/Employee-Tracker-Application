@@ -1,5 +1,22 @@
 const inquirer = require('inquirer');
 const fs = require('fs')
+const mysql = require('mysql2');
+const { error } = require('console');
+require ('dotenv').config()
+// Connect to database
+const db = mysql.createConnection(
+    {
+      host: 'localhost',
+      // MySQL username,
+      user: 'root',
+      // MySQL password
+      password: process.env.DB_PW,
+      database: 'Employee_Tracker'
+    },
+    console.log(`Connected to the courses_db database.`)
+  );
+  promptQuestions()
+function promptQuestions(){
 inquirer
   .prompt([
     {
@@ -39,5 +56,21 @@ inquirer
   .then((answer) => {
     var userChoice = answer.choice
     console.log(userChoice)
-
+    if(userChoice === 'View_all_department'){
+        viewAllD()
+    }
+        if(userChoice === 'Add_a_department'){
+            viewAllD()
+        }
+    
   });
+}
+
+  function viewAllD (){
+  // Query database
+  db.query('SELECT * FROM  department', function (err, results) {
+    if (err) throw err
+    console.table(results);
+    promptQuestions()
+  });
+  }
