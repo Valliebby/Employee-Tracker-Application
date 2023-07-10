@@ -50,7 +50,7 @@ inquirer
     
     {  
         name: 'Update a employee role', 
-        value: 'Add_a_employee_role' },
+        value: 'Update_a_employee_role' },
         
     ]}])
   .then((answer) => {
@@ -62,6 +62,24 @@ inquirer
         if(userChoice === 'Add_a_department'){
             viewAllD()
         }
+        if(userChoice === 'View_all_roles'){
+            viewAllD()
+        }
+        if(userChoice === 'Add_a_role'){
+            viewAllD()
+        }    
+        if(userChoice === 'View_all_employee'){
+            viewAllD()
+        }    
+        if(userChoice === 'View_a_employee'){
+            viewAllD()
+        }   
+        if(userChoice === 'Add_a_employee'){
+            viewAllD()
+        }         
+        if(userChoice === 'Update_a_employee_role'){
+            viewAllD()
+        }             
     
   });
 }
