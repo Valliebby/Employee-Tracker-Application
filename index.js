@@ -60,25 +60,25 @@ inquirer
         viewAllD()
     }
         if(userChoice === 'Add_a_department'){
-            viewAllD()
+            Add_a_department()
         }
         if(userChoice === 'View_all_roles'){
-            viewAllD()
+            View_all_roles()
         }
         if(userChoice === 'Add_a_role'){
-            viewAllD()
+            Add_a_role()
         }    
         if(userChoice === 'View_all_employee'){
-            viewAllD()
+            View_all_employee()
         }    
         if(userChoice === 'View_a_employee'){
-            viewAllD()
+            View_a_employee()
         }   
         if(userChoice === 'Add_a_employee'){
-            viewAllD()
+            Add_a_employee()
         }         
         if(userChoice === 'Update_a_employee_role'){
-            viewAllD()
+          Update_a_employee_role()
         }             
     
   });
@@ -92,3 +92,61 @@ inquirer
     promptQuestions()
   });
   }
+  function Add_a_department(){
+    // Query database
+       db.query('SELECT * FROM  department', function (err, results) {
+          if (err) throw err
+          console.table(results);
+          promptQuestions()
+        });
+      }
+
+  function View_all_employee (){
+    // Query database
+    db.query('SELECT * FROM  employee', function (err, results) {
+      if (err) throw err
+      console.table(results);
+      promptQuestions()
+    });
+    }
+    function Add_a_employee(){
+      // Query database
+         db.query('SELECT * FROM  employee', function (err, results) {
+            if (err) throw err
+            console.table(results);
+            promptQuestions()
+          });
+        }
+
+    function View_all_roles (){
+        // Query database
+        db.query('SELECT * FROM  roles', function (err, results) {
+          if (err) throw err
+          console.table(results);
+          promptQuestions()
+        });
+        }
+  function Add_a_role(){
+       // Query database
+            db.query('SELECT * FROM  roles', function (err, results) {
+              if (err) throw err
+              console.table(results);
+              promptQuestions()
+            });
+            }
+ function View_a_employee(){
+     // Query database
+     db.query('SELECT * FROM  employee', function (err, results) {
+       if (err) throw err
+       console.table(results);
+       promptQuestions()
+      });
+      }
+ function Update_a_employee_role(){
+        // Query database
+        db.query('SELECT * FROM  roles', function (err, results) {
+          if (err) throw err
+          console.table(results);
+          promptQuestions()
+         });
+         }
