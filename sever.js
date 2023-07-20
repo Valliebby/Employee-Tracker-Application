@@ -457,7 +457,7 @@ function addEmployee() {
     let firstName = res.first_name;
     let lastName = res.last_name;
 
-    db.findAllRoles().then(([rows]) => {
+    database.findAllRoles().then(([rows]) => {
       let roles = rows;
       const roleChoices = roles.map(({ id, title }) => ({
         name: title,
@@ -472,7 +472,7 @@ function addEmployee() {
       }).then((res) => {
         let roleId = res.roleId;
 
-        db.findAllEmployees().then(([rows]) => {
+        database.findAllEmployees().then(([rows]) => {
           let employees = rows;
           const managerChoices = employees.map(
             ({ id, first_name, last_name }) => ({
@@ -497,7 +497,7 @@ function addEmployee() {
                 last_name: lastName,
               };
 
-              db.createEmployee(employee);
+              database.createEmployee(employee);
             })
             .then(() =>
               console.log(`Added ${firstName} ${lastName} to the database`)
