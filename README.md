@@ -17,7 +17,7 @@ The Employee Tracker App offers the following features:
 ## Installation
 
 To install and set up the Employee Tracker App, follow these steps:
-
+Link: https://github.com/Valliebby/Employee-Tracker-App
 1. Clone the repository: `git clone https://github.com/Valliebby/Employee-Tracker-App.git`
 2. Navigate to the project directory: `cd Employee-Tracker-App`
 3. Install the dependencies: `npm install`
