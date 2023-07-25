@@ -1,4 +1,4 @@
-use employees;
+use Employee_Tracker;
 
 INSERT INTO department (name)
 VALUES ("HR"),
