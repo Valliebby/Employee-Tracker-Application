@@ -318,13 +318,11 @@ function updateEmployeeManager() {
 
 // View all roles
 function viewRoles() {
-  database.findAllRoles()
-    .then(([rows]) => {
-      let roles = rows;
-      console.log("\n");
-      console.table(roles);
-    })
-    .then(() => promptQuestions());
+  db.query("select * from role", (err, res) => {
+    if (err) throw err;
+    console.table(res);
+   promptQuestions();
+  });
 }
 
 // Add a role
@@ -383,16 +381,15 @@ function removeRole() {
   });
 }
 
-// View all deparments
-function viewDepartments() {
-  db.findAllDepartments()
-    .then(([rows]) => {
-      let departments = rows;
-      console.log("\n");
-      console.table(departments);
-    })
-    .then(() => promptQuestions());
+// View all deparment
+function viewDepartment() {
+  db.query("select * from department", (err, res) => {
+    if (err) throw err;
+    console.table(res);
+   promptQuestions();
+  });
 }
+
 
 // Add a department
 function addDepartment() {
