@@ -28,63 +28,63 @@ function promptQuestions() {
         choices: [
           {
             name: "View All Employees",
-            value: "VIEW_EMPLOYEES",
+            value: "View_Employees",
           },
           {
             name: "View All Employees By Department",
-            value: "VIEW_EMPLOYEES_BY_DEPARTMENT",
+            value: "View_Employees_Department",
           },
           {
-            name: "View All Employees By Manager",
-            value: "VIEW_EMPLOYEES_BY_MANAGER",
+            // name: "View All Employees By Manager",
+            // value: "VIEW_EMPLOYEES_BY_MANAGER",
           },
           {
-            name: "Add Employee",
-            value: "ADD_EMPLOYEE",
+            name: "Add a Employee",
+            value: "Add_Employee",
           },
           {
-            name: "Remove Employee",
-            value: "REMOVE_EMPLOYEE",
+            name: "Remove a Employee",
+            value: "Remove_Employee",
           },
           {
             name: "Update Employee Role",
-            value: "UPDATE_EMPLOYEE_ROLE",
+            value: "Update_Employee_Role",
           },
           {
-            name: "Update Employee Manager",
-            value: "UPDATE_EMPLOYEE_MANAGER",
+            name: "Update a Manager",
+            value: "Update_Manger",
           },
           {
             name: "View All Roles",
-            value: "VIEW_ROLES",
+            value: "View_all_Roles",
           },
           {
-            name: "Add Role",
-            value: "ADD_ROLE",
+            name: "Add a Role",
+            value: "Add_Roles",
           },
           {
-            name: "Remove Role",
-            value: "REMOVE_ROLE",
+            name: "Remove a Roles",
+            value: "Remove_Roles",
           },
           {
             name: "View All Departments",
-            value: "VIEW_DEPARTMENTS",
+            value: "View_Department",
           },
           {
             name: "Add Department",
-            value: "ADD_DEPARTMENT",
+            value: "Add_Department",
           },
           {
-            name: "Remove Department",
-            value: "REMOVE_DEPARTMENT",
+            name: "Delete Department",
+            value: "Delete_Department",
           },
           {
-            name: "View Total Utilized Budget By Department",
-            value: "VIEW_UTILIZED_BUDGET_BY_DEPARTMENT",
+            name: "View Total Budget By Department",
+            value: "View_Budget_By_Department",
           },
           {
             name: "Quit",
-            value: "QUIT",
+            value: "Quit",
           },
         ],
       },
@@ -93,47 +93,47 @@ function promptQuestions() {
       let choice = res.choice;
       // Call the appropriate function depending on the user chose
       switch (choice) {
-        case "VIEW_EMPLOYEES":
+        case "View_Employees":
           viewEmployees();
           break;
-        case "VIEW_EMPLOYEES_BY_DEPARTMENT":
+        case "View_Employees_By_Department":
           viewEmployeesByDepartment();
           break;
-        case "VIEW_EMPLOYEES_BY_MANAGER":
+        case "View_EMPLOYEES_BY_MANAGER":
           viewEmployeesByManager();
           break;
-        case "ADD_EMPLOYEE":
+        case "Add_Employee":
           addEmployee();
           break;
-        case "REMOVE_EMPLOYEE":
+        case "Remove_Employee":
           removeEmployee();
           break;
-        case "UPDATE_EMPLOYEE_ROLE":
+        case "Update_Employee_ROLE":
           updateEmployeeRole();
           break;
-        case "UPDATE_EMPLOYEE_MANAGER":
+        case "Update_Employee_MANAGER":
           updateEmployeeManager();
           break;
-        case "VIEW_DEPARTMENTS":
-          viewDepartments();
+        case "View_Department":
+          viewDepartment();
           break;
-        case "ADD_DEPARTMENT":
+        case "Add_Department":
           addDepartment();
           break;
-        case "REMOVE_DEPARTMENT":
-          removeDepartment();
+        case "Delete_Department":
+          deleteDepartment();
           break;
-        case "VIEW_UTILIZED_BUDGET_BY_DEPARTMENT":
-          viewUtilizedBudgetByDepartment();
+        case "View_Budget_By_Department":
+          viewBudgetByDepartment();
           break;
-        case "VIEW_ROLES":
+        case "View_Roles":
           viewRoles();
           break;
-        case "ADD_ROLE":
+        case "Add_Role":
           addRole();
           break;
-        case "REMOVE_ROLE":
-          removeRole();
+        case "Delete_Role":
+          deleteRole();
           break;
         default:
           quit();
@@ -152,7 +152,7 @@ function viewEmployees() {
 
 // View all employees by department
 function viewEmployeesByDepartment() {
-  database.findAllDepartments()
+  database.findAllDepartment()
     .then(([rows]) => {
   let department = rows;
   const departmentChoices = department.map(({ id, name }) => ({
@@ -177,7 +177,7 @@ function viewEmployeesByDepartment() {
     .then(() => promptQuestions());
 })}
 
-// View all employees that report to a specific manager
+// View all employees to a specific manager
 function viewEmployeesByManager() {
   database.findAllEmployees().then(([rows]) => {
     let managers = rows;

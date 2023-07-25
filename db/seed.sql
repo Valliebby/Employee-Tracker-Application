@@ -21,3 +21,4 @@ VALUES ("Bob","Smith", 2, NULL),
        ("James", "Cole",3, 1),
        ("Rick", "Noble",4, 2),
        ("Sam", "Kirbby",5, 1);
+       ("Valerie", "Elizabeth",2, 1);
