@@ -1,4 +1,4 @@
-// Variable Definition
+// Dependance's needed
 const inquirer = require("inquirer");
 const fs = require("fs");
 const mysql = require("mysql2");
@@ -31,14 +31,6 @@ function promptQuestions() {
             value: "View_Employees",
           },
           {
-            name: "View All Employees By Department",
-            value: "View_Employees_Department",
-          },
-          {
-            // name: "View All Employees By Manager",
-            // value: "VIEW_EMPLOYEES_BY_MANAGER",
-          },
-          {
             name: "Add a Employee",
             value: "Add_Employee",
           },
@@ -51,20 +43,16 @@ function promptQuestions() {
             value: "Update_Employee_Role",
           },
           {
-            name: "Update a Manager",
-            value: "Update_Manger",
-          },
-          {
             name: "View All Roles",
             value: "View_all_Roles",
           },
           {
             name: "Add a Role",
-            value: "Add_Roles",
+            value: "Add_Role",
           },
           {
-            name: "Remove a Roles",
-            value: "Remove_Roles",
+            name: "Remove a Role",
+            value: "Remove_Role",
           },
           {
             name: "View All Departments",
@@ -77,10 +65,6 @@ function promptQuestions() {
           {
             name: "Delete Department",
             value: "Delete_Department",
-          },
-          {
-            name: "View Total Budget By Department",
-            value: "View_Budget_By_Department",
           },
           {
             name: "Quit",
@@ -96,23 +80,14 @@ function promptQuestions() {
         case "View_Employees":
           viewEmployees();
           break;
-        case "View_Employees_By_Department":
-          viewEmployeesByDepartment();
-          break;
-        case "View_EMPLOYEES_BY_MANAGER":
-          viewEmployeesByManager();
-          break;
         case "Add_Employee":
           addEmployee();
           break;
         case "Remove_Employee":
           removeEmployee();
           break;
-        case "Update_Employee_ROLE":
+        case "Update_Employee_Role":
           updateEmployeeRole();
-          break;
-        case "Update_Employee_MANAGER":
-          updateEmployeeManager();
           break;
         case "View_Department":
           viewDepartment();
@@ -122,9 +97,6 @@ function promptQuestions() {
           break;
         case "Delete_Department":
           deleteDepartment();
-          break;
-        case "View_Budget_By_Department":
-          viewBudgetByDepartment();
           break;
         case "View_Roles":
           viewRoles();
@@ -381,8 +353,8 @@ function removeRole() {
   });
 }
 
-// View all deparment
-function viewDepartment() {
+// View all deparments
+function viewDepartments() {
   db.query("select * from department", (err, res) => {
     if (err) throw err;
     console.table(res);
