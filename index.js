@@ -85,7 +85,7 @@ function promptQuestions() {
       }
     });
 }
-// View all
+// View all Department Function.
 function viewAllDepartment() {
   // Query database
   db.query("SELECT * FROM  department", function (err, results) {
@@ -102,6 +102,7 @@ function viewAllRoles() {
     promptQuestions();
   });
 }
+// View all Employees Function.
 function viewAllEmployees() {
   // Query database
   db.query("SELECT * FROM  employee", function (err, results) {
@@ -111,44 +112,71 @@ function viewAllEmployees() {
   });
 }
 
-// Add 
+// Adding a Department Function.
 function addDepartment() {
+  inquirer
+    .prompt([
+      { type: "input", name: "name", message: "Please enter department name" },
+    ])
+    .then((answer) => {
+      db.query(
+        "INSERT INTO department(name) VALUE(?)",
+        answer.name,
+        function (err, results) {
+          if (err) throw err;
+          console.table(results);
+          promptQuestions();
+          inquirer;
+        }
+      );
+    });
+}
+// Adding a a Role Function.
+function addRole() {
+  inquirer
+    .prompt([
+      { type: "input", name: "title", message: "Please enter the role title" },
+      { type: "input", name: "salary", message: "Please enter the salary" },
+      {
+        type: "input",
+        name: "department_id",
+        message: "Please enter the department_id",
+      },
+    ])
+    .then((answer) => {
+      db.query(
+        "INSERT INTO role (title,salary,department_id) VALUES(?,?,?)",
+        [answer.title, answer.salary, answer.department_id],
+        function (err, results) {
+          if (err) throw err;
+          console.table(results);
+          promptQuestions();
+          inquirer;
+        }
+      );
+    });
+}
+// Adding a Employee Function.
+function addEmployee() {
     inquirer.prompt ([
-        {type: "input",
-         name: "name",
-         message: "Please enter department name",
-    }
+    {type: "input",
+    name: "first_name",
+    message: "Please enter the employee's first name",
+    },
+    {type: "input",
+    name: "last_name",
+    message: "Please enter the employee's first name",
+    },
+    {type: "input",
+    name: "role_id",
+    message: "Please enter the role_id",
+    },
 ]).then((answer) =>{
-    db.query("INSERT INTO department(name) VALUE(?)", answer.name,function (err, results) {
+    db.query("INSERT INTO role (first_name,last_name,department_id) VALUES(?,?,?)",[answer.fist_name,answer.last_name,answer.department_id],function (err, results) {
         if (err) throw err;
         console.table(results);
         promptQuestions();
         inquirer
-      });
+    });
 })
 }
-function addRole() {
-    inquirer.prompt ([
-        {type: "input",
-         name: "title",
-         message: "Please enter the role title",
-    },
-    {type: "input",
-    name: "salary",
-    message: "Please enter the salary",
-    },
-    {type: "input",
-    name: "department_id",
-    message: "Please enter the department_id",
-    },
-]).then((answer) =>{
-    db.query("INSERT INTO role (title,salary,department_id) VALUES(?,?,?)",[answer.title,answer.salary,answer.department_id],function (err, results) {
-        if (err) throw err;
-        console.table(results);
-        promptQuestions();
-        inquirer
-      });
-})
-
-    
-  }
