@@ -129,7 +129,9 @@ function viewAllEmployees() {
 function addDepartment() {
   inquirer
     .prompt([
-      { type: "input", name: "name", message: "Please enter department name" },
+      { type: "input", 
+        name: "name", 
+        message: "Please enter department name" },
     ])
     .then((answer) => {
       db.query(
@@ -217,7 +219,7 @@ function removeDepartment() {
     ])
     .then((answer) => {
       db.query(
-        "INSERT INTO department (department_id) VALUES(?,?,?)",
+        "INSERT INTO department (department_id) VALUES(?)",
         [answer.department_id],
         function (err, results) {
           if (err) throw err;
@@ -249,7 +251,7 @@ function removeEmployee() {
     ])
     .then((answer) => {
       db.query(
-        "INSERT INTO role (first_name,last_name,role_id) VALUES(?,?,?)",
+        "INSERT INTO employee (first_name,last_name,role_id) VALUES(?,?,?)",
         [answer.fist_name, answer.last_name, answer.role_id],
         function (err, results) {
           if (err) throw err;
@@ -269,7 +271,9 @@ function removeRole() {
         name: "tile",
         message: "Please enter the role you would like to remove",
       },
-      { type: "input", name: "salary", message: "Please enter the salary" },
+      { type: "input", 
+        name: "salary", 
+        message: "Please enter the salary" },
       {
         type: "input",
         name: "department_id",
@@ -278,7 +282,7 @@ function removeRole() {
     ])
     .then((answer) => {
       db.query(
-        "INSERT INTO role (first_name,last_name,department_id) VALUES(?,?,?)",
+        "INSERT INTO role (title,salary,department_id) VALUES(?,?,?)",
         [answer.title, answer.salary, answer.department_id],
         function (err, results) {
           if (err) throw err;
@@ -304,7 +308,7 @@ function updateEmployeeRole() {
       ])
       .then((answer) => {
         db.query(
-          "INSERT INTO role (first_name,last_name,department_id) VALUES(?,?,?)",
+          "INSERT INTO employee (employee_id,role_id) VALUES(?,?)",
           [answer.employee_id, answer.role_id],
           function (err, results) {
             if (err) throw err;
