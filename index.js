@@ -53,6 +53,10 @@ function promptQuestions() {
             name: "Update a employee role",
             value: "Update_a_employee_role",
           },
+          {
+            name: "Quit",
+            value: "Quit",
+          },
         ],
       },
     ])
@@ -65,11 +69,17 @@ function promptQuestions() {
       if (userChoice === "Add_a_department") {
         addDepartment();
       }
+      if (userChoice === "Remove_a_department") {
+        removeDepartment();
+      }
       if (userChoice === "View_all_roles") {
         viewAllRoles();
       }
       if (userChoice === "Add_a_role") {
         addRole();
+      }
+      if (userChoice === "Remove_a_role") {
+        removeRole();
       }
       if (userChoice === "View_all_employees") {
         viewAllEmployees();
@@ -80,8 +90,14 @@ function promptQuestions() {
       if (userChoice === "Add_a_employee") {
         addEmployee();
       }
+      if (userChoice === "Remove_a_employee") {
+        removeEmployee();
+      }
       if (userChoice === "Update_a_employee_role") {
         updateEmployeeRole();
+      }
+      if (userChoice === "Quit") {
+        Quit();
       }
     });
 }
@@ -131,7 +147,7 @@ function addDepartment() {
       );
     });
 }
-// Adding a a Role Function.
+// Adding a Role Function.
 function addRole() {
   inquirer
     .prompt([
@@ -140,7 +156,7 @@ function addRole() {
       {
         type: "input",
         name: "department_id",
-        message: "Please enter the department_id",
+        message: "Please enter the department ID",
       },
     ])
     .then((answer) => {
@@ -158,25 +174,139 @@ function addRole() {
 }
 // Adding a Employee Function.
 function addEmployee() {
-    inquirer.prompt ([
-    {type: "input",
-    name: "first_name",
-    message: "Please enter the employee's first name",
-    },
-    {type: "input",
-    name: "last_name",
-    message: "Please enter the employee's first name",
-    },
-    {type: "input",
-    name: "role_id",
-    message: "Please enter the role_id",
-    },
-]).then((answer) =>{
-    db.query("INSERT INTO role (first_name,last_name,department_id) VALUES(?,?,?)",[answer.fist_name,answer.last_name,answer.department_id],function (err, results) {
-        if (err) throw err;
-        console.table(results);
-        promptQuestions();
-        inquirer
+  inquirer
+    .prompt([
+      {
+        type: "input",
+        name: "first_name",
+        message: "Please enter the employee's first name",
+      },
+      {
+        type: "input",
+        name: "last_name",
+        message: "Please enter the employee's last name",
+      },
+      { type: "input", name: "role_id", message: "Please enter the role_id" },
+    ])
+    .then((answer) => {
+      db.query(
+        "INSERT INTO role (first_name,last_name,role_id) VALUES(?,?,?)",
+        [answer.fist_name, answer.last_name, answer.role_id],
+        function (err, results) {
+          if (err) throw err;
+          console.table(results);
+          promptQuestions();
+          inquirer;
+        }
+      );
     });
-})
 }
+// Removing a Department Function.
+function removeDepartment() {
+  inquirer
+    .prompt([
+      {
+        type: "input",
+        name: "department_id",
+        message: "Please enter the department ID you would like to remove",
+      },
+    ])
+    .then((answer) => {
+      db.query(
+        "INSERT INTO department (department_id) VALUES(?,?,?)",
+        [answer.department_id],
+        function (err, results) {
+          if (err) throw err;
+          console.table(results);
+          promptQuestions();
+          inquirer;
+        }
+      );
+    });
+}
+
+// Removing a Employee Function.
+function removeEmployee() {
+  inquirer
+    .prompt([
+      {
+        type: "input",
+        name: "first_name",
+        message: "Please enter the employee's first name you are removing",
+      },
+      {
+        type: "input",
+        name: "last_name",
+        message: "Please enter the employee's last name",
+      },
+      { type: "input", name: "role_id", message: "Please enter the role_id" },
+    ])
+    .then((answer) => {
+      db.query(
+        "INSERT INTO role (first_name,last_name,role_id) VALUES(?,?,?)",
+        [answer.fist_name, answer.last_name, answer.role_id],
+        function (err, results) {
+          if (err) throw err;
+          console.table(results);
+          promptQuestions();
+          inquirer;
+        }
+      );
+    });
+}
+// Removing a Role Function.
+function removeRole() {
+  inquirer
+    .prompt([
+      {
+        type: "input",
+        name: "tile",
+        message: "Please enter the role you would like to remove",
+      },
+      { type: "input", name: "salary", message: "Please enter the salary" },
+      {
+        type: "input",
+        name: "department_id",
+        message: "Please enter the department_id",
+      },
+    ])
+    .then((answer) => {
+      db.query(
+        "INSERT INTO role (first_name,last_name,department_id) VALUES(?,?,?)",
+        [answer.title, answer.salary, answer.department_id],
+        function (err, results) {
+          if (err) throw err;
+          console.table(results);
+          promptQuestions();
+          inquirer;
+        }
+      );
+    });
+}
+function updateEmployeeRole() {
+    prompt([
+        {
+          type: "input",
+          message: "Enter employee ID to update role",
+          name: "employee_id",
+        },
+        {
+          type: "input",
+          message: "Enter new employee ID",
+          name: "role_id",
+        },
+      ])
+      .then((answer) => {
+        db.query(
+          "INSERT INTO role (first_name,last_name,department_id) VALUES(?,?,?)",
+          [answer.employee_id, answer.role_id],
+          function (err, results) {
+            if (err) throw err;
+            console.table(results);
+            promptQuestions();
+            inquirer;
+          }
+        );
+      });
+  }
+  loadMainPrompts();
