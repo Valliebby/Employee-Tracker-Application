@@ -45,6 +45,7 @@ The Employee Tracker App is built using the following technologies:
 - seed: seed database.
 - schema: A web application framework.
 - MySQL: A popular relational database management system.
+- Inquirer: please use npm i inquirer@8.2.4.
 
 
 
