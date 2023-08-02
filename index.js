@@ -84,9 +84,6 @@ function promptQuestions() {
       if (userChoice === "View_all_employees") {
         viewAllEmployees();
       }
-      if (userChoice === "View_a_employee") {
-        viewEmployee();
-      }
       if (userChoice === "Add_a_employee") {
         addEmployee();
       }
@@ -151,8 +148,13 @@ function addDepartment() {
 function addRole() {
   inquirer
     .prompt([
-      { type: "input", name: "title", message: "Please enter the role title" },
-      { type: "input", name: "salary", message: "Please enter the salary" },
+      { type: "input", 
+        name: "title", 
+        message: "Please enter the role title" 
+      },
+      { type: "input", name: "salary", 
+       message: "Please enter the salary" 
+      },
       {
         type: "input",
         name: "department_id",
@@ -186,7 +188,9 @@ function addEmployee() {
         name: "last_name",
         message: "Please enter the employee's last name",
       },
-      { type: "input", name: "role_id", message: "Please enter the role_id" },
+      { type: "input", 
+        name: "role_id", 
+        message: "Please enter the role_id" },
     ])
     .then((answer) => {
       db.query(
@@ -239,7 +243,9 @@ function removeEmployee() {
         name: "last_name",
         message: "Please enter the employee's last name",
       },
-      { type: "input", name: "role_id", message: "Please enter the role_id" },
+      { type: "input", 
+        name: "role_id", 
+        message: "Please enter the role ID" },
     ])
     .then((answer) => {
       db.query(
