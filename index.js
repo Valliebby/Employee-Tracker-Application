@@ -309,4 +309,4 @@ function updateEmployeeRole() {
         );
       });
   }
-  loadMainPrompts();
+  promptQuestions();
