@@ -58,5 +58,4 @@ Contributions to the Employee Tracker App are welcome! If you find any bugs or h
 This project was inspired by the need for a comprehensive employee management system in modern businesses. We would like to thank all the contributors and the open-source community for their valuable efforts.
 
 
-[Untitled_ Jul 20, 2023 4_26 PM.webm](https://github.com/Valliebby/Employee-Tracker-App/assets/119483866/00e678db-fdef-4921-aee1-475128ca95a7)
 
